@@ -1,0 +1,53 @@
+server:
+  contextPath: /
+  port: 10001
+sessionTimeout: 14400
+mongo:
+  host: 127.0.0.1
+  port: 27017
+  database: tkserver
+  username: tkserver
+  password: tkserver123!@#
+spring:
+  redis:
+    database: 2 # Redis数据库索引（默认为0）
+    host: localhost # Redis服务器地址
+    password: # Redis服务器连接密码（默认为空）
+    port: 6379 # Redis服务器连接端口
+    pool:
+      max-idle: 8 # 连接池中的最小空闲连接
+      min-idle: 0 # 连接池中的最大空闲连接
+      max-active: 8 # 连接池最大连接数（使用负值表示没有限制）
+      max-wait: -1 # 连接池最大阻塞等待时间（使用负值表示没有限制）
+  data:
+    rest:
+      useHalAsDefaultJsonMediaType: false
+      returnBodyForPutAndPost: true
+      returnBodyOnCreate: true
+      returnBodyOnUpdate: true
+  jackson:
+    timeZone: GMT+8
+    date-format: yyyy/MM/dd HH:mm:ss
+    deserialization:
+      fail-on-unknown-properties: false
+    serialization:
+      fail-on-empty-beans: false
+      write-null-map-values: true
+      write-empty-json-arrays: true
+  messages:
+    basename: i18n/messages
+
+multipart:
+  enabled: true # Enable support of multi-part uploads.
+  file-size-threshold: 0 # Threshold after which files will be written to disk. Values can use the suffixed "MB" or "KB" to indicate a Megabyte or Kilobyte size.
+  max-file-size: 200Mb # Max file size. Values can use the suffixed "MB" or "KB" to indicate a Megabyte or Kilobyte size.
+  max-request-size: 1000Mb
+
+sconfig:
+  dev: true
+  needAuth: true
+  clientId: demo
+  gameServer: http://127.0.0.1:30002
+  uploadPath: /Users/Mingkun/Documents/upload/FileResourceLibraryQuery
+  uploadUrl: http://27.111.82.68:8001 # 資料上傳的網址(感覺要在建另一個api去接)
+

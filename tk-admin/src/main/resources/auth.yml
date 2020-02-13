@@ -1,0 +1,247 @@
+groups:
+  - name: 首页
+    permissions:
+      - id: base
+        name: 首页
+        base: true
+        resources:
+          - indexPage
+  - name: 会员管理
+    permissions:
+      - id: base
+        name: 会员管理
+        base: true
+        resources:
+          - member
+    groups:
+      - name: 会员列表
+        permissions:
+          - id: base
+            name: 会员列表
+            base: true
+            resources:
+              - member
+          - id: member_edit
+            name: 编辑会员
+            resources:
+              - member_edit
+          - id: member_export
+            name: 导出会员
+            resources:
+              - member_export
+          - id: member_kick
+            name: 下线会员
+            resources:
+              - member_kick
+          - id: member_remark
+            name: 备注会员
+            resources:
+              - member_remark
+        groups:
+          - name: 列表数据
+            permissions:
+              - id: phone
+                name: 手机号
+                resources:
+                  - phone
+              - id: email
+                name: 邮箱
+                resources:
+                  - email
+              - id: realName
+                name: 真实姓名
+                resources:
+                  - realName
+              - id: nickName
+                name: 昵称
+                resources:
+                  - nickName
+              - id: referer
+                name: 来源
+                resources:
+                  - referer
+              - id: ip
+                name: IP地址
+                resources:
+                  - ip
+      - name: 留言管理
+        permissions:
+          - id: base
+            name: 留言管理
+            base: true
+            resources:
+              - feedback
+          - id: feedback_handle
+            name: 留言处理
+            resources:
+              - feedback_handle
+      - name: 会员组管理
+        permissions:
+          - id: base
+            name: 会员组管理
+            base: true
+            resources:
+              - member_group
+          - id: member_group_edit
+            name: 编辑会员组
+            resources:
+              - member_group_edit
+          - id: member_group_delete
+            name: 删除会员组
+            resources:
+              - member_group_delete
+      - name: 会员等级
+        permissions:
+          - id: base
+            name: 会员等级
+            base: true
+            resources:
+              - member_level
+          - id: member_level_edit
+            name: 编辑会员等级
+            resources:
+              - member_level_edit
+          - id: member_level_delete
+            name: 删除会员等级
+            resources:
+              - member_level_delete
+      - name: 会员标记
+        permissions:
+          - id: base
+            name: 会员标记
+            base: true
+            resources:
+              - member_tag
+          - id: member_tag_edit
+            name: 编辑会员标记
+            resources:
+              - member_tag_edit
+          - id: member_tag_delete
+            name: 删除会员标记
+            resources:
+              - member_tag_delete
+      - name: 回访记录
+        permissions:
+          - id: base
+            name: 回访记录
+            base: true
+            resources:
+              - visit_record
+          - id: visit_record_edit
+            name: 编辑回访记录
+            resources:
+              - visit_record_edit
+      - name: 会员操作日志
+        permissions:
+          - id: base
+            name: 会员操作日志
+            base: true
+            resources:
+              - member_operate_log
+  - name: 记录管理
+    permissions:
+      - id: base
+        name: 记录管理
+        base: true
+        resources:
+          - record
+    groups:
+    - name: 操作日志
+      permissions:
+        - id: base
+          name: 操作日志
+          base: true
+          resources:
+            - operation_log
+
+  - name: 配置管理
+    permissions:
+      - id: base
+        name: 配置管理
+        base: true
+        resources:
+          - config
+    groups:
+      - name: 系统配置管理
+        permissions:
+          - id: base
+            name: 系统配置管理
+            base: true
+            resources:
+              - system_config
+          - id: system_config_edit
+            name: 编辑系统配置
+            resources:
+              - system_config_edit
+          - id: system_config_delete
+            name: 删除系统配置
+            resources:
+              - system_config_delete
+      - name: 系统配置(开发)
+        permissions:
+          - id: base
+            name: 系统配置(开发)
+            base: true
+            resources:
+              - system_config_dev
+          - id: system_config_dev_edit
+            name: 编辑系统配置(开发)
+            resources:
+              - system_config_dev_edit
+          - id: system_config_dev_delete
+            name: 删除系统配置(开发)
+            resources:
+              - system_config_dev_delete
+      - name: 配置分类
+        permissions:
+          - id: base
+            name: 配置分类
+            base: true
+            resources:
+              - system_category
+          - id: system_category_edit
+            name: 编辑配置分类
+            resources:
+              - system_category_edit
+          - id: system_category_delete
+            name: 删除配置分类
+            resources:
+              - system_category_delete
+  - name: 权限管理
+    permissions:
+      - id: base
+        name: 权限管理
+        base: true
+        resources:
+          - auth
+    groups:
+      - name: 用户管理
+        permissions:
+          - id: base
+            name: 用户管理
+            base: true
+            resources:
+              - user
+          - id: user_edit
+            name: 编辑用户
+            resources:
+              - user_edit
+          - id: user_delete
+            name: 删除用户
+            resources:
+              - user_delete
+      - name: 角色管理
+        permissions:
+          - id: base
+            name: 角色管理
+            base: true
+            resources:
+              - role
+          - id: role_edit
+            name: 编辑角色
+            resources:
+              - role_edit
+          - id: role_delete
+            name: 删除角色
+            resources:
+              - role_delete

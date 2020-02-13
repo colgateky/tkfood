@@ -1,0 +1,85 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.3.RELEASE'
+    }
+    repositories {
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:0.5.0.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+//apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'eclipse'
+apply plugin: 'io.spring.dependency-management'
+//apply plugin: 'war'
+
+jar {
+    baseName = 'tk-common'
+    version = '1.0.0-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+    compile project(":magic")
+    compile ("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("net.sourceforge.nekohtml:nekohtml:1.9.22")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+    compile("org.springframework:spring-context-support")
+    compile("org.apache.httpcomponents:httpclient")
+    compile("org.springframework:spring-aspects")
+    compile('net.sf.json-lib:json-lib:2.4:jdk15')
+    compile('org.bouncycastle:bcprov-jdk16:1.46')
+    compile("org.quartz-scheduler:quartz:2.2.1")
+//    compile("org.springframework.boot:spring-boot-starter-redis")
+    compile("org.apache.poi:poi:3.9")
+    compile group: 'org.springframework.security', name: 'spring-security-crypto', version: '4.1.3.RELEASE'
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    testCompile ('org.springframework.boot:spring-boot-starter-test')
+    testCompile ("junit:junit:4.11")
+    compile ('org.slf4j:slf4j-api:1.7.14')
+    compile ('ch.qos.logback:logback-core:1.1.3')
+    compile ('ch.qos.logback:logback-classic:1.1.3')
+    compile ('ch.qos.logback:logback-access:1.1.3')
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.7.2'
+    compile group: 'org.reflections', name: 'reflections', version: '0.9.11'
+    compile('io.springfox:springfox-swagger2:2.6.1')
+    compile('io.springfox:springfox-swagger-ui:2.6.1')
+    compile 'org.apache.httpcomponents:fluent-hc:4.5.3'
+    //compile group: 'com.google.code.gson', name: 'gson', version: '2.8.0'
+    //compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+task "create-dirs" << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+
+test.setEnabled(false)
+
+

@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: ${profile:dev}
+
+logging:
+  level:
+    root: INFO
+    org:
+      mongodb: WARN

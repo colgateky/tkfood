@@ -1,0 +1,7 @@
+rootProject.name = 'tkfood'
+include 'magic'
+include 'tk-admin'
+include 'tk-common'
+include 'tk-api'
+include 'tk-task'
+
